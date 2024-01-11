@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Создать событие
+{% endblock title %}
+
+
+{%block body%}
+
+<div class="main">
+    <h1>Создать событие</h1>
+
+    {%for i in get_flashed_messages()%}
+    <div class="flash"> {{i}} </div>
+    {% endfor %}
+
+    <div class="forma">
+
+        <form action="" method="post">
+        <p>Название:
+            <br><input type="text" name="title">
+
+        <p>Дата:
+            <br><input type="date" name="event_date" required>
+        </p>
+
+        <p>Напиток:
+            <br> <select name="drink">
+                {%for i in drinks%}
+                <option>{{i.title}}</option>
+                {%endfor%}
+            </select>
+        </p>
+
+        <p>Количество(мл):
+            <br><input type="number" name="volume" required>
+        </p>
+
+        <p>Потрачено(₽):
+            <br><input type="number" name="money">
+        </p>
+
+        <p>Место
+            <br><input type="text" name="place">
+        </p>
+
+        <p>Описание
+            <br><textarea name="description" cols="30" rows="10" name="description"></textarea>
+        </p>
+
+        <p><input type="submit" value="Сохранить"></p>
+    </form>
+    </div>
+</div>
+
+{%endblock body%}

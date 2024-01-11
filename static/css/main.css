@@ -1,0 +1,137 @@
+p, h1, a, br
+{
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+}
+
+body
+{
+    color: rgb(255, 255, 255);
+    padding: 0;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 24px;
+    background-color: rgb(19, 19, 19);
+}
+
+.left_bar
+{
+    position: fixed;
+    float: left;
+    width: 14%;
+    height: 100vh;
+    padding: 10px;
+    border-right: 4px solid lawngreen;
+}
+
+.left_bar p 
+{
+    padding: 10px;
+    margin: 0;
+    transition: background-color 0.2s;
+    cursor: pointer;
+    
+}
+
+.left_bar p:hover
+{
+    padding-left: 25px;
+    background-color: rgb(46, 46, 46);
+}
+
+
+.left_bar p
+{
+    padding-left: 20px;
+    border-radius: 5px;
+}
+
+.left_bar img
+{
+    width: 24px;
+    height: auto;
+}
+
+
+.main
+{
+    float: left;
+    margin-left: 20%;
+    width: 70%;
+}
+
+.main a:hover
+{
+    padding-left: 25px;
+    background-color: rgb(46, 46, 46);
+    padding: 10px;
+    margin: 0;
+    transition: background-color 0.2s;
+    border-radius: 5px;
+}
+
+.hidden
+{
+    display: inline-block;
+}
+
+.hidden a:hover
+{
+    display: inline-block;
+}
+
+
+.forma h1 {
+    text-align: center;
+    color: #333;
+}
+
+.forma p {
+    margin-bottom: 15px;
+}
+
+.forma label {
+    display: block;
+}
+
+.forma input,
+.forma textarea,
+.forma select
+{
+    width: 20%;
+    padding: 10px;
+    border: 1px solid #747474;
+    background-color: rgb(22, 22, 22);
+    color: white;
+    resize: none;
+    border-radius: 10px;
+}
+
+.forma input,
+.forma select
+{
+    border-radius: 50px;
+}
+
+.forma input[type="submit"] 
+{
+    background-color: rgb(34, 34, 34);
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.forma input[type="submit"]:hover 
+{
+    background-color: rgb(70, 139, 0);
+}
+
+.big_text
+{
+    height: 100px;
+}
+
+.flash
+{
+    color:lawngreen
+}

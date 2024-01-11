@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+      
+{% block title %}
+Профиль
+{% endblock title %}
+
+
+{%block body%}
+
+<div class = "main">
+    <h1>Профиль</h1>
+
+    <p>id: {{id}}
+    <br>Имя: {{nickname}} 
+    <br>Любимый напиток: 
+    <br>Выпито: {{stats[1]}}мл 
+    <br>Потрачено денег: {{stats[0]}}₽ </p>
+
+    
+    
+    <div class = "forma"><form action="/logout" method="get"> <input type="submit" value="Выйти из аккаунта"> </form></div>
+</div>
+
+{%endblock body%}

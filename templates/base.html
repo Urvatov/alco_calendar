@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {%block title%} {%endblock title%} 
+    </title>
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/main.css') }}">
+    <link rel="stylesheet" href="../static/css/main.css">
+    <link rel="icon" href="/static/img/drink.ico" type="image/x-icon">
+</head>
+
+<body>
+    
+    <div class = "left_bar">
+        {% if current_user.is_authenticated%}
+        <p><img src="/static/img/profile.png"> <a href="/profile">Профиль</a></p>
+        {%endif%}
+        <p><img src="/static/img/add.png"> <a href="/create_event">Создать событие</a></p>
+        <p><img src="/static/img/history.png"> <a href="/history">История событий</a></p>
+        <p><img src="/static/img/drink.png"> <a href="/drinks">Напитки</a></p>
+
+        {% if current_user.is_authenticated == false%}
+        <p><a href="/login">Войти</a></p>
+        <p><a href="/register">Регистрация</a></p>
+        {%endif%}
+        <p><img src="/static/img/settings.png"><a href="/settings"> Настройки</a></p>
+
+        
+    </div>
+
+    
+    {%block body%}
+    
+    {%endblock body%} 
+    
+</body>
+</html>

@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Напитки
+{% endblock title %}
+
+
+{%block body%}
+
+<div class="main">
+    <h1>Напитки</h1>
+    {%for i in get_flashed_messages()%}
+    <div class="flash"> {{i}} </div>
+    {% endfor %}
+
+    <div class="forma">
+        <form action="" method="post">
+            <p>Название: <br><input type="text" name="title" required></p>
+            <p>Крепость(%): <br><input type="number" min="0" max="100" name="alcohol" required> </p>
+            <p> Объем(л): <br><input type="number" name="volume" step="0.001" required> </p>
+            <p> Цена(₽): <br><input type="number" name="price" required> </p>
+            <p><input type="submit" value="Сохранить"></p>
+        </form>
+    </div>
+
+    <h2>Ваши напитки:</h2>
+
+    {%if drinks%}
+
+    {%for i in drinks%}
+    <div class="drinks">
+        <p>{{loop.index}}. {{i.title}}, {{i.alcohol}}%, {{i.volume}}л, {{i.price}} рублей 
+            <a href="{{ url_for('delete_drink', drink_id = i.id)}}" class="hidden"><img src="static/img/delete.png" alt="Удалить"></a>
+        </p>
+    </div>
+    {%endfor%}
+
+    {% else %}
+    <p>У вас пока нет напитков, но вы можете их добавить</p>
+    {%endif%}
+
+
+</div>
+{%endblock body%}

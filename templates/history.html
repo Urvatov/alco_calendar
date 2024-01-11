@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}
+История
+{% endblock title %}
+
+
+{%block body%}
+
+<div class="main">
+    <h1>История событий</h1>
+
+    {%for i in get_flashed_messages()%}
+    <div class="flash"> {{i}} </div>
+    {% endfor %}
+
+    <p><img src="/static/img/add.png" style="height: 24px;"> <a href="/create_event">Создать событие</a></p>
+
+    <ul>
+        {%if events%}
+        {%for i in events%}
+        <li>
+            <p> <b><u>{{i.event_date}}</u></b> 
+                <br> &emsp; {{i.title}}: {{i.drink_title}}, {{i.volume}}мл, {{i.money_spent}}₽
+                <br> &emsp; <i>{{i.descript}}</i> 
+            </p>
+        </li>
+        {%endfor%}
+        {%endif%}
+    </ul>
+</div>
+
+{%endblock body%}
