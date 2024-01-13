@@ -143,6 +143,12 @@ def history():
     print(events)
     return render_template("history.html", events = events)
 
+@app.route("/delete_event/<int:event_id>")
+def delete_event(event_id):
+    D.delete_event(event_id)
+    flash("Событие удалено")
+    return redirect(url_for('history'))
+
 @app.route("/login", methods=["POST", "GET"])
 def login():
     if request.method == "POST":

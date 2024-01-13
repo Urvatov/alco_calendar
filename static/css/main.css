@@ -70,7 +70,8 @@ body
     border-radius: 5px;
 }
 
-.drinks:hover .hidden
+.drinks:hover .hidden,
+.event:hover .hidden
 {
     display: inline-block;
 }

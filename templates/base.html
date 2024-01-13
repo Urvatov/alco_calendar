@@ -25,7 +25,10 @@
         <p><a href="/login">Войти</a></p>
         <p><a href="/register">Регистрация</a></p>
         {%endif%}
+
+        {% if current_user.is_authenticated%}
         <p><img src="/static/img/settings.png"><a href="/settings"> Настройки</a></p>
+        {%endif%}
 
         
     </div>

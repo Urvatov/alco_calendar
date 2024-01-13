@@ -102,13 +102,23 @@ class Data:
 
     def get_events(self, user_id):
         try:
-            self.cursor.execute(f"SELECT title, drink_title, event_date, volume, money_spent, descript FROM events WHERE user_id = {user_id} ORDER BY event_date DESC")
+            self.cursor.execute(f"SELECT id, title, drink_title, event_date, volume, money_spent, descript FROM events WHERE user_id = {user_id} ORDER BY event_date DESC")
             events = self.cursor.fetchall()
 
             return events
         
         except error:
                 print("ОШИБКА! " + str(error))
+
+    def delete_event(self, event_id):
+        try:
+            self.cursor.execute(f"DELETE FROM events WHERE id = {event_id}")
+            self.db.commit()
+
+            return redirect(url_for('history'))
+        
+        except error:
+            print("ОШИБКА! " + str(error))
          
     
 
