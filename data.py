@@ -35,8 +35,6 @@ class Data:
         except error:
             print("ОШИБКА! " + str(error))
     
-    
-
     def add_user(self, nickname, hash):
             try:
                 self.cursor.execute(f"SELECT COUNT() as 'count' FROM user WHERE nickname LIKE '{nickname}' ")
@@ -68,19 +66,22 @@ class Data:
         except error:
                 print("ОШИБКА! " + str(error))
     
-    def update(self, user_id, type, new_name, new_password):
+    def update_name(self, user_id, new_name):
         try:
-            if type == "name":
-                self.cursor.execute(f"UPDATE user SET nickname = '{new_name}' WHERE id = {user_id} ")
-
-            if type == "password":
-                self.cursor.execute(f"UPDATE user SET psw = '{new_password}' WHERE id = {user_id} ")  
-                 
+            self.cursor.execute(f"UPDATE user SET nickname = '{new_name}' WHERE id = {user_id} ")
             self.db.commit()
         
         except error:
                 print("ОШИБКА! " + str(error))
-         
+    
+    def update_password(self, user_id, new_password):
+        try:
+            psw = generate_password_hash(new_password)
+            self.cursor.execute(f"UPDATE user SET psw = '{psw}' WHERE id = {user_id} ")    
+            self.db.commit()
+        
+        except error:
+                print("ОШИБКА! " + str(error))
     
     def get_statistic(self, user_id):
         try:

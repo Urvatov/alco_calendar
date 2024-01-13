@@ -66,12 +66,12 @@ def index():
 def settings():
     if request.method == "POST":
         if "new_name" in request.form:
-            D.update(current_user.get_id(), "nickname", request.form["new_name"])
+            D.update_name(current_user.get_id(), request.form["new_name"])
             flash("Вы сменили имя")
             return redirect(url_for('settings'))
         
         if "new_password" in request.form:
-            D.update(current_user.get_id(), "password", request.form["new_password"])
+            D.update_password(current_user.get_id(), request.form["new_password"])
             flash("Вы сменили пароль")
             return redirect(url_for('settings'))
         
