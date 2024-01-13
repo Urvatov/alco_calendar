@@ -12,7 +12,7 @@
 
     <p>id: {{id}} 
     <br>Имя: {{nickname}} 
-    <br>Любимый напиток: 
+    <br>Любимый напиток: {%if fauvorite_drink%}{{fauvorite_drink[0]}} {%else%}Таких пока нет {%endif%}
     <br>Выпито: {%if stats[1]%} {{stats[1]}}мл {%else%}0мл {%endif%}
     <br>Потрачено денег:{%if stats[0]%} {{stats[0]}}₽ {%else%}0₽ {%endif%} </p>
     

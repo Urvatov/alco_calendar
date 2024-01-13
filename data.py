@@ -25,6 +25,22 @@ class Data:
         except error:
             print("ОШИБКА! " + str(error))
     
+    def get_fauvorite_drink(self, user_id):
+        try:
+            self.cursor.execute(f"""SELECT drink_title
+                                    FROM events
+                                    WHERE user_id = {user_id}
+                                    GROUP BY drink_title
+                                    ORDER BY COUNT(*) DESC
+                                    LIMIT 1;""")
+            
+            fauvorite_drink = self.cursor.fetchone()
+
+            return fauvorite_drink
+             
+        except error:
+            print("ОШИБКА! " + str(error))
+
     def delete_drink(self, drink_id):
         try:
             self.cursor.execute(f"DELETE FROM drink WHERE id = {drink_id}")

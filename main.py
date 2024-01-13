@@ -83,6 +83,7 @@ def profile():
     return render_template("profile.html", 
                            nickname = current_user.get_nickname(),
                            id = current_user.get_id(),
+                           fauvorite_drink = D.get_fauvorite_drink(current_user.get_id()),
                            stats = D.get_statistic(current_user.get_id())
                            )
 
