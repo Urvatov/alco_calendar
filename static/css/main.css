@@ -70,14 +70,14 @@ body
     border-radius: 5px;
 }
 
-.hidden
+.drinks:hover .hidden
 {
     display: inline-block;
 }
 
-.hidden a:hover
+.hidden
 {
-    display: inline-block;
+    display: none;
 }
 
 

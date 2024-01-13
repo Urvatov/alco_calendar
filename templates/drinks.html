@@ -30,7 +30,7 @@
     {%for i in drinks%}
     <div class="drinks">
         <p>{{loop.index}}. {{i.title}}, {{i.alcohol}}%, {{i.volume}}л, {{i.price}} рублей 
-            <a href="{{ url_for('delete_drink', drink_id = i.id)}}" class="hidden"><img src="static/img/delete.png" alt="Удалить"></a>
+            <a href="{{ url_for('delete_drink', drink_id = i.id)}}"> <img src="static/img/delete.png" alt="Удалить" class="hidden"></a>
         </p>
     </div>
     {%endfor%}
