@@ -48,7 +48,11 @@
             <br><textarea name="description" cols="30" rows="10" name="description"></textarea>
         </p>
 
+        {%if drinks%}
         <p><input type="submit" value="Сохранить"></p>
+        {%else%}
+        <p style="color:rgb(206, 0, 0)">Вы не можете добавлять события, пока у вас нет напитков! Создайте напиток <a href="drinks" style="color:rgb(206, 0, 0)" ><u>здесь</u></a></p>
+        {%endif%}
     </form>
     </div>
 </div>
