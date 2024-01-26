@@ -5,7 +5,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from user import User
 import sqlite3
 import os
-from livereload import Server
+
 
 
 DATABASE = "/db/database.db"
