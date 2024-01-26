@@ -167,7 +167,6 @@ def register():
             hash = generate_password_hash(request.form["psw"])
             D.add_user(request.form['nickname'], hash)
             return redirect("/login")
-
     return render_template("register.html")
 
 
