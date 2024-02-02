@@ -6,8 +6,6 @@ from user import User
 import sqlite3
 import os
 
-
-
 DATABASE = "/db/database.db"
 DEBUG = True
 SECRET_KEY = "12345"
@@ -163,10 +161,10 @@ def login():
 @app.route("/register", methods = ["POST", "GET"])
 def register():
     if request.method == "POST":
-        if len(request.form["nickname"]) > 4 and len(request.form["psw"]) > 4:
-            hash = generate_password_hash(request.form["psw"])
-            D.add_user(request.form['nickname'], hash)
-            return redirect("/login")
+        hash = generate_password_hash(request.form["psw"])
+        D.add_user(request.form['nickname'], hash)
+        
+        return redirect("/login")
     return render_template("register.html")
 
 

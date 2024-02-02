@@ -135,6 +135,20 @@ class Data:
         
         except error:
             print("ОШИБКА! " + str(error))
+
+    def add_starter_drinks(self, user_id):
+        try:
+            self.cursor.execute(f"""INSERT INTO drink 
+                                VALUES
+                                (NULL, Пиво, 0, 5, 0.5, {user_id}),
+                                (NULL, Шампанское, 0, 10, 0.7, {user_id}),
+                                (NULL, Вино, 0, 10, 0.7, {user_id}
+                                (NULL, Водка, 0, 40, 0.5, {user_id},
+                                (NULL, Коньяк, 0, 40, 0.5, {user_id},
+                                (NULL, Виски, 0, 40, 0.5, {user_id}),""")
+        
+        except error:
+            print("ОШИБКА! " + str(error))
          
     
 
