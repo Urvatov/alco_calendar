@@ -1,4 +1,6 @@
 class User():
+    starter_drinks = False
+
     def fromDB(self, user_id, db):
         self.__user = db.get_user(user_id)
         return self

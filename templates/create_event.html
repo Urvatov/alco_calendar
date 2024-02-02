@@ -20,11 +20,11 @@
         <p>Название:
             <br><input type="text" name="title">
 
-        <p>Дата:
+        <p>Дата*:
             <br><input type="date" name="event_date" required>
         </p>
 
-        <p>Напиток:
+        <p>Напиток*:
             <br> <select name="drink">
                 {%for i in drinks%}
                 <option>{{i.title}}</option>
@@ -32,12 +32,12 @@
             </select>
         </p>
 
-        <p>Количество(мл):
-            <br><input type="number" name="volume" required>
+        <p>Количество(мл)*:
+            <br><input type="number" name="volume" min="1" required>
         </p>
 
         <p>Потрачено(₽):
-            <br><input type="number" name="money">
+            <br><input type="number" min="0" name="money">
         </p>
 
         <p>Место

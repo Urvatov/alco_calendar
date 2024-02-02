@@ -10,6 +10,10 @@
 <div class="main">
     <h1>Авторизация</h1>
 
+    {%for i in get_flashed_messages()%}
+    <div class="flash"> {{i}} </div>
+    {% endfor %}
+    
     <div class="forma">
         <form action="" method="post">
             <p><label>Логин:

@@ -1,3 +1,9 @@
+CREATE TABLE IF NOT EXISTS user
+(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    nickname TEXT NOT NULL,
+    psw TEXT NOT NULL
+);
 
 CREATE TABLE IF NOT EXISTS drink 
 (
@@ -10,15 +16,6 @@ CREATE TABLE IF NOT EXISTS drink
     user_id INTEGER,
     FOREIGN KEY(user_id) REFERENCES user(id)
 );
-
-CREATE TABLE IF NOT EXISTS user
-(
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    nickname TEXT NOT NULL,
-    psw TEXT NOT NULL
-);
-
-
 
 CREATE TABLE IF NOT EXISTS events
 (
@@ -33,7 +30,6 @@ CREATE TABLE IF NOT EXISTS events
     descript TEXT,
 
     FOREIGN KEY(user_id) REFERENCES user(id) ON UPDATE CASCADE,
-    FOREIGN KEY (drink_title) REFERENCES drink(title) ON UPDATE CASCADE,
     FOREIGN KEY(drink_id) REFERENCES drink(id) ON UPDATE CASCADE
 );
 

@@ -78,6 +78,7 @@ def settings():
 @app.route("/profile")
 @login_required
 def profile():
+    print("starter drinks: ", current_user.starter_drinks)
     return render_template("profile.html", 
                            nickname = current_user.get_nickname(),
                            id = current_user.get_id(),
@@ -155,6 +156,7 @@ def login():
         if user and check_password_hash(user['psw'], request.form['psw']):
             user_login = User().create(user)
             login_user(user_login)
+
             return redirect("/")
     return render_template("login.html")
 
@@ -163,7 +165,7 @@ def register():
     if request.method == "POST":
         hash = generate_password_hash(request.form["psw"])
         D.add_user(request.form['nickname'], hash)
-        
+        flash("Успешная регистрация", "accept")
         return redirect("/login")
     return render_template("register.html")
 

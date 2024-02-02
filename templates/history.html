@@ -19,13 +19,15 @@
     <ul>
         {%if events%}
         {%for i in events%}
-        <div class = "event">
-        <li>
-            <p> <b><u>{{i.event_date}}</u></b> <a href="{{url_for('delete_event', event_id = i.id)}}"><img src="static/img/delete.png" alt="Удалить" class ="hidden"></a>
-                <br> &emsp; {{i.title}}: {{i.drink_title}}, {{i.volume}}мл, {{i.money_spent}}₽
-                <br> &emsp; <i>{{i.descript}}</i> 
-            </p>
-        </li></div>
+        <div class="event">
+            <li>
+                <p> <b><u>{{i.event_date}}</u> - {{i.title}}</b>   
+                    <a href="{{url_for('delete_event', event_id = i.id)}}"> <img src="static/img/delete.png" alt="Удалить" class="hidden"></a>
+                    <br> {{i.drink_title}}, {{i.volume}}мл, {{i.money_spent}}₽
+                    <br> <i>{{i.descript}}</i>
+                </p>
+            </li>
+        </div>
         {%endfor%}
 
         {%else%}
