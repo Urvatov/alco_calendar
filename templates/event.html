@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block title %}
+История
+{% endblock title %}
+
+{%block body%}
+
+<div class="main">
+    <p><h1>{{event_info.event_date}} | {{event_info.title}}</h1>
+    Место: {{event_info.place}}
+    </p>
+    <p>Потрачено: {%if price_sum[0]%} {{price_sum[0]}}₽ {%else%} 0₽ {%endif%}
+    <br>Выпито: {%if volume_sum[0]%} {{volume_sum[0]}}мл {%else%} 0мл {%endif%} </p>
+
+    <b>Вы выпили:</b>
+    {%for i in get_flashed_messages()%}
+    <div class="flash"> {{i}} </div>
+    {% endfor %}
+    
+    {%if drinks_in_event%}
+    {%for i in drinks_in_event%}
+    <br> {{i.drink_title}} {{i.drink_alcohol}}%, {{i.volume}}мл, {{i.price}}₽
+    {%endfor%}
+    {%endif%}
+    
+    <div class="forma">
+    <form action="" method="post">
+    <p>Напиток:
+
+    {%if drinks%}
+    <br> <select name="drink">
+        {%for i in drinks%}
+        <option>{{i.title}}</option>
+        {%endfor%}
+        </select>
+    </p>
+
+    <p>Количество(мл):
+        <br><input type="number" name="volume" min="1" required>
+    </p>
+    
+    <p>Стоимость(₽)
+        <br><input type="number" name="price" min="0" value="0" required>
+    </p>
+    <input type="submit" value="Добавить напиток"></p>
+
+    {%else%}
+    <p style="color:rgb(206, 0, 0)">Вы не можете добавлять события, пока у вас нет напитков! Создайте напиток <a href="{{url_for('drinks')}}" style="color:rgb(206, 0, 0)" ><u>здесь</u></a></p>
+    {%endif%}
+    </form>
+    
+
+    <p>Описание:
+        <br>{{description[0]}}
+    </p>
+    </div>
+    
+</div>
+
+{%endblock%}

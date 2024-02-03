@@ -99,12 +99,9 @@ def create_event():
 
     if request.method == "POST":
         D.add_event(current_user.get_id(),
-                    1,
-                    request.form["drink"],
                     request.form["title"],
                     request.form["event_date"],
-                    request.form["volume"],
-                    request.form["money"],
+                    request.form["place"],
                     request.form["description"]) 
         flash("Вы успешно добавили событие")
         return redirect(url_for("history"))
@@ -143,8 +140,23 @@ def history():
     print(events)
     return render_template("history.html", events = events)
 
+@app.route("/event/<int:event_id>", methods = ["POST", "GET"])
+@login_required
+def event(event_id):
+    if request.method == "POST":
+        D.add_drink_in_event(current_user.get_id(), event_id, request.form["drink"], request.form["volume"], request.form["price"])
+        flash("Напиток добавлен", "accept")
+        return redirect(url_for('event', event_id = event_id))
+    return render_template("event.html",
+                            drinks = D.get_drinks(current_user.get_id()),
+                            drinks_in_event = D.get_drinks_in_event(event_id),
+                            volume_sum = D.get_sum_of_volume(event_id),
+                            price_sum = D.get_sum_of_price(event_id),
+                            description = D.get_description(event_id),
+                            event_info = D.get_event_info(event_id))
+
 @app.route("/delete_event/<int:event_id>")
-def delete_event(event_id):
+def delete_event(event_id): 
     D.delete_event(event_id)
     flash("Событие удалено")
     return redirect(url_for('history'))
@@ -156,7 +168,7 @@ def login():
         if user and check_password_hash(user['psw'], request.form['psw']):
             user_login = User().create(user)
             login_user(user_login)
-
+            
             return redirect("/")
     return render_template("login.html")
 

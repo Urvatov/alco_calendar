@@ -24,22 +24,6 @@
             <br><input type="date" name="event_date" required>
         </p>
 
-        <p>Напиток*:
-            <br> <select name="drink">
-                {%for i in drinks%}
-                <option>{{i.title}}</option>
-                {%endfor%}
-            </select>
-        </p>
-
-        <p>Количество(мл)*:
-            <br><input type="number" name="volume" min="1" required>
-        </p>
-
-        <p>Потрачено(₽):
-            <br><input type="number" min="0" name="money">
-        </p>
-
         <p>Место
             <br><input type="text" name="place">
         </p>

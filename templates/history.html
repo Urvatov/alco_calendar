@@ -21,9 +21,10 @@
         {%for i in events%}
         <div class="event">
             <li>
-                <p> <b><u>{{i.event_date}}</u> - {{i.title}}</b>   
+                <p> <a href="{{url_for('event', event_id = i.id)}}"><b><u>{{i.event_date}}</u> - {{i.title}}</b></a>   
                     <a href="{{url_for('delete_event', event_id = i.id)}}"> <img src="static/img/delete.png" alt="Удалить" class="hidden"></a>
-                    <br> {{i.drink_title}}, {{i.volume}}мл, {{i.money_spent}}₽
+                    <br>    0{{i.volume}}мл, 0{{i.money_spent}}₽
+                    <br>{{i.place}}
                     <br> <i>{{i.descript}}</i>
                 </p>
             </li>
