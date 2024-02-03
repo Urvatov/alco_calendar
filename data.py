@@ -186,6 +186,7 @@ class Data:
 
     def delete_event(self, event_id):
         try:
+            self.cursor.execute(f"DELETE FROM events_drink WHERE event_id = {event_id}")
             self.cursor.execute(f"DELETE FROM events WHERE id = {event_id}")
             self.db.commit()
 
