@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for, request, redirect
+from flask import Flask, render_template, url_for, request, redirect, flash
 from werkzeug.security import generate_password_hash
 
 from sqlite3 import Error as error
@@ -62,7 +62,9 @@ class Data:
             try:
                 self.cursor.execute(f"SELECT COUNT() as 'count' FROM user WHERE nickname LIKE '{nickname}' ")
                 res = self.cursor.fetchone()
+
                 if res['count'] > 0:
+                    flash("ПОЛЬЗОВАТЕЛЬ С ТАКИМ ИМЕНЕМ УЖЕ СУЩЕСТВУЕТ")
                     print("ПОЛЬЗОВАТЕЛЬ С ТАКИМ ИМЕНЕМ УЖЕ СУЩЕСТВУЕТ")
 
                 self.cursor.execute("INSERT INTO user VALUES(NULL, ?, ?)", (nickname, hash))
@@ -157,7 +159,8 @@ class Data:
             return price_sum
         except error:
             print("ОШИБКА! " + str(error))
-
+    
+    
     def get_events(self, user_id):
         try:
             self.cursor.execute(f"SELECT id, title, event_date, place, descript FROM events WHERE user_id = {user_id} ORDER BY event_date DESC")

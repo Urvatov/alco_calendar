@@ -1,7 +1,7 @@
 CREATE TABLE IF NOT EXISTS user
 (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    nickname TEXT NOT NULL,
+    nickname TEXT NOT NULL UNIQUE,
     psw TEXT NOT NULL
 );
 
@@ -12,9 +12,9 @@ CREATE TABLE IF NOT EXISTS drink
     price INTEGER NOT NULL,
     alcohol INTEGER NOT NULL,
     volume REAL NOT NULL,
-
     user_id INTEGER,
-    FOREIGN KEY(user_id) REFERENCES user(id)
+
+    FOREIGN KEY(user_id) REFERENCES user(id) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS events
@@ -25,24 +25,23 @@ CREATE TABLE IF NOT EXISTS events
     event_date DATE NOT NULL,
     place TEXT,
     descript TEXT,
-    FOREIGN KEY(user_id) REFERENCES user(id) ON UPDATE CASCADE
+
+    FOREIGN KEY(user_id) REFERENCES user(id) 
 );
 
 CREATE TABLE IF NOT EXISTS events_drink
 (
-    id INTEGER,
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
     user_id INTEGER,
     event_id INTEGER,
     drink_id INTEGER,
     drink_title TEXT,
-    drink_alcohol REAL,
+    drink_alcohol INTEGER,
     volume INTEGER,
     price INTEGER,
 
-    PRIMARY KEY(id)
-    
-    FOREIGN KEY(user_id) REFERENCES user(id) ON UPDATE CASCADE,
-    FOREIGN KEY(event_id) REFERENCES events(id) ON UPDATE CASCADE ON DELETE CASCADE,
-    FOREIGN KEY(drink_id) REFERENCES drink(id) ON UPDATE CASCADE,
-    FOREIGN KEY(drink_alcohol) REFERENCES drink(alcohol) ON UPDATE CASCADE
+    FOREIGN KEY(user_id) REFERENCES user(id) ON DELETE CASCADE,
+    FOREIGN KEY(event_id) REFERENCES events(id) ON DELETE CASCADE,
+    FOREIGN KEY(drink_id) REFERENCES drink(id),
+    FOREIGN KEY(drink_alcohol) REFERENCES drink(alcohol)
 );

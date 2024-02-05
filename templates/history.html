@@ -23,8 +23,8 @@
             <li>
                 <p> <a href="{{url_for('event', event_id = i.id)}}"><b><u>{{i.event_date}}</u> - {{i.title}}</b></a>   
                     <a href="{{url_for('delete_event', event_id = i.id)}}"> <img src="static/img/delete.png" alt="Удалить" class="hidden"></a>
-                    <br>    0{{i.volume}}мл, 0{{i.money_spent}}₽
                     <br>{{i.place}}
+                    <br>
                     <br> <i>{{i.descript}}</i>
                 </p>
             </li>

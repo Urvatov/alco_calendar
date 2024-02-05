@@ -20,7 +20,9 @@
     
     {%if drinks_in_event%}
     {%for i in drinks_in_event%}
-    <br> {{i.drink_title}} {{i.drink_alcohol}}%, {{i.volume}}мл, {{i.price}}₽
+    
+    <br> &nbsp &nbsp ●{{i.drink_title}} {{i.drink_alcohol}}%, {{i.volume}}мл, {{i.price}}₽
+    
     {%endfor%}
 
     {%else%}
